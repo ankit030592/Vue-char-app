@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chat room</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/alertify.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/default.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/semantic.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/bootstrap.min.css" />
+</head>
+
+<body>
+    <div id="app">
+        <div v-if="!group_joined">
+            <label>Enter Your name</label>
+            <input type="text" v-model="name" />
+            <!-- <span>{{name}}</span> -->
+            <button v-bind:class='{button:true}' v-on:click.prevent="join_group(); get_all_message();">Join Group</button>
+        </div>
+        <div v-bind:class="{container:true}" v-if="group_joined">
+            <div v-bind:class='{center:true}'>
+                <div>
+                    <h3>Welcome {{name}}</h3>
+                    <div v-bind:class='{message:true}'>
+                    </div>
+                    <form>
+                        <input type='hidden' name='name'>
+                        <textarea placeholder='Say hi to group members' v-model="user_writes"></textarea>
+                        <input type='submit' v-bind:class='{button:true}' v-on:click.prevent="send_message">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="./app.js"></script>
+
+</html>

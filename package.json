@@ -1,0 +1,11 @@
+{
+  "name": "group_chat",
+  "description": "a coding dojo project",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "mongodb": "^3.0.1",
+    "mongoskin": "^2.1.0",
+    "socket.io": "^1.7.4"
+  }
+}
